@@ -29,11 +29,11 @@ def FiniteDifferenceMethod(a, b, alpha, beta, f, N):
 # Example 1
 a = 0  # left boundary
 b = 1  # right boundary
-alpha = 1  # coefficient for second derivative
+alpha = 1  # coefficient for u''(x)
 beta = -225  # coefficient for u(x)
-N = 16  # number of subdivisions (intervals)
+N = 15  # number of subdivisions (intervals)
 
-# Define the forcing function f(x)
+# Defining function f(x)
 def f(x):
     return -225*x**2 + 225*x - 2
 
@@ -41,10 +41,10 @@ def f(x):
 x_exact = np.linspace(a, b, 200)
 u_exact = x_exact**2 - x_exact
 
-# Solve the equation
+# Solving the equation
 x, u = FiniteDifferenceMethod(a, b, alpha, beta, f, N)
 
-# Plot the solution
+# Plotting the solution
 plt.plot(x, u, label='Numerical solution', marker = 'o', ms = 3, c = 'navy')
 plt.plot(x_exact, u_exact, label='Exact solution', linewidth = 1, c = 'm')
 text = r"$\alpha = $" + f"{alpha}," + r"$\quad \beta = $" + f"{beta}," + r"$\quad N = $" + f"{N}"   
