@@ -34,7 +34,7 @@ def FiniteDifferenceMethodNonHomogeneous(a, b, alpha, beta, f, N, chi, eta):
 # Example
 a = 1  # left boundary
 b = 2  # right boundary
-alpha = 1 # coefficient for second derivative
+alpha = 1 # coefficient for u''(x)
 beta = 1  # coefficient for u(x)
 N = 15  # number of subdivisions (intervals)
 chi = np.e  # non-homogeneous boundary at x = a
@@ -48,7 +48,7 @@ if beta*(4*alpha + beta*h**2) < 0:
         print("Avoiding singluarity issue by adding 1 to N")
         N = N + 1 
 
-# Define the forcing function f(x)
+# Defining function f(x)
 def f(x):
     return -2*np.exp(x)
 
@@ -56,10 +56,10 @@ def f(x):
 x_exact = np.linspace(a, b, 200)
 u_exact = x_exact*np.exp(x_exact)
 
-# Solve the equation
+# Solving the equation
 x, u = FiniteDifferenceMethodNonHomogeneous(a, b, alpha, beta, f, N, chi, eta)
 
-# Plot the solution
+# Plotting the solution
 plt.plot(x, u, label='Numerical solution', marker = 'o', ms = 3, c = 'navy')
 plt.plot(x_exact, u_exact, label='Exact solution', linewidth = 1, c = 'm')
 text = r"$\alpha = $" + f"{round(alpha,2)}," + r"$\quad \beta = $" + f"{round(beta,2)}," + r"$\quad N = $" + f"{N},"   + r"$\quad \chi \approx $" + f"{round(chi,2)}," + r"$\quad \eta \approx $" + f"{round(eta,2)}"  
