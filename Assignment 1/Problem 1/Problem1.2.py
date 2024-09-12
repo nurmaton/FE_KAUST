@@ -30,7 +30,7 @@ def FiniteDifferenceMethod(a, b, alpha, beta, f, N):
 # Example 2
 a = 0  # left boundary
 b = np.pi  # right boundary
-alpha = -np.pi**2  # coefficient for second derivative
+alpha = -np.pi**2  # coefficient for u''(x)
 beta = 10000*(2+np.sqrt(2))  # coefficient for u(x)
 N = 100  # number of subdivisions (intervals)
 
@@ -42,7 +42,7 @@ if beta*(4*alpha + beta*h**2) < 0:
         print("Avoiding singluarity issue by adding 1 to N")
         N = N + 1 
 
-# Define the forcing function f(x)
+# Defining function f(x)
 def f(x):
     return (10000*(2+np.sqrt(2))-np.pi**2)*np.sin(x)
 
@@ -50,10 +50,10 @@ def f(x):
 x_exact = np.linspace(a, b, 200)
 u_exact = np.sin(x_exact)
 
-# Solve the equation
+# Solving the equation
 x, u = FiniteDifferenceMethod(a, b, alpha, beta, f, N)
 
-# Plot the solution
+# Plotting the solution
 plt.plot(x, u, label='Numerical solution', marker = 'o', ms = 3, c = 'navy')
 plt.plot(x_exact, u_exact, label='Exact solution', linewidth = 1, c = 'm')
 text = r"$\alpha \approx $" + f"{round(alpha,2)}," + r"$\quad \beta \approx $" + f"{round(beta,2)}," + r"$\quad N = $" + f"{N}"   
