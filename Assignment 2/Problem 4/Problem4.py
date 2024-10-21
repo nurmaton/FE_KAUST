@@ -28,7 +28,7 @@ def finite_element_method(N):
     off_diagonal = (-1 / h) * np.ones(N - 1)
     
     # Building the tridiagonal matrix A
-    A = np.diag(main_diagonal) + np.diag(off_diagonal, k=-1) + np.diag(off_diagonal, k=1)
+    A = np.diag(main_diagonal) + np.diag(off_diagonal, -1) + np.diag(off_diagonal, 1)
     
     # Filling load vector b with the right-hand side values
     b = h * np.ones(N)
