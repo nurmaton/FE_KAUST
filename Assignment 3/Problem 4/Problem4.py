@@ -150,6 +150,5 @@ def main():
     # Display the plot
     plt.show()
 
-# Run the main function if the script is executed
 if __name__ == '__main__':
     main()
