@@ -141,7 +141,7 @@ def main():
     text = r"$N = $" + f"{N}"
     plt.text(0.8, 0.5, text)
     
-    # Setting plot labels, title, and grid
+    # Setting plot labels and title
     plt.xlabel('x')
     plt.ylabel('y')
     plt.title(f'$L^2$ Projection of f onto $V_h$')
