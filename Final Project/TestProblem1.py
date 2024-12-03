@@ -1,5 +1,5 @@
 # This code is based on Ariel Yaniv's work on solving the 2D Poisson equation using the Finite Element Method.
-# Only a portion of the code has been borrowed and modified for this implementation.
+# A portion of the original code has been borrowed and modified for this implementation.
 # You can find the original article here: 
 # https://medium.com/@ariel.yaniv/finite-element-method-explained-how-to-solve-the-2d-poisson-equation-part-ii-7179a4871b98
 
