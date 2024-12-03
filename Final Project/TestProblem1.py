@@ -613,6 +613,10 @@ def main():
         du_dx = y * (y - 1) * (2 * x - 1)
         du_dy = x * (x - 1) * (2 * y - 1)
         return np.array([du_dx, du_dy])
+    
+    # Dirichlet boundary condition function
+    def uBC(x, y):
+        return 0
 
     # Domain parameters
     x_min, x_max = 0, 1
@@ -645,10 +649,10 @@ def main():
         # Create rectangular mesh
         mesh = Mesh(x_min, x_max, n_x, y_min, y_max, n_y)
 
-        # Set Dirichlet boundary conditions at all boundary nodes (u = 0)
-        uBC = 0
+        # Set Dirichlet boundary conditions at all boundary nodes
         for point_index in mesh.boundary_points:
-            mesh.bc_points["dirichlet"][point_index] = uBC
+            x_bc, y_bc = mesh.triangulation.points[point_index]
+            mesh.bc_points["dirichlet"][point_index] = uBC(x_bc, y_bc)
 
         # Solve the 2D self-adjoint elliptic PDE
         # Set up the finite element solver
@@ -741,10 +745,10 @@ def main():
     n_x = 16
     n_y = 20
     mesh = Mesh(x_min, x_max, n_x, y_min, y_max, n_y)
-    # Set Dirichlet boundary conditions at all boundary nodes (u = 0)
-    uBC = 0
+    # Set Dirichlet boundary conditions at all boundary nodes
     for point_index in mesh.boundary_points:
-        mesh.bc_points["dirichlet"][point_index] = uBC
+        x_bc, y_bc = mesh.triangulation.points[point_index]
+        mesh.bc_points["dirichlet"][point_index] = uBC(x_bc, y_bc)
     solver = FESelfAdjointEllipticPDE2D(mesh, function_p, function_q, function_f)
     # Build matrices and apply boundary conditions
     solver.process()
