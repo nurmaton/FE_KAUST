@@ -749,6 +749,7 @@ def main():
     for point_index in mesh.boundary_points:
         x_bc, y_bc = mesh.triangulation.points[point_index]
         mesh.bc_points["dirichlet"][point_index] = uBC(x_bc, y_bc)
+        
     solver = FESelfAdjointEllipticPDE2D(mesh, function_p, function_q, function_f)
     # Build matrices and apply boundary conditions
     solver.process()
